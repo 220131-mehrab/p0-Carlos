@@ -1,7 +1,7 @@
 package com.revature.songdex;
 
 public class Song {
-    private String songId, songName, artistId, artistName, popularity, explicit, songType, trackNumber, numArtists, numAvailableMarkets, releaseDate, durationMs, key, mode, timeSignature, acousticness, danceability, energy, instrumentalness, liveness, loudness, speechiness, valence, tempo;
+    private final String songId, songName, artistId, artistName, popularity, explicit, songType, trackNumber, numArtists, numAvailableMarkets, releaseDate, durationMs, key, mode, timeSignature, acousticness, danceability, energy, instrumentalness, liveness, loudness, speechiness, valence, tempo;
 
     public Song(String line) {
         String[] columns = line.split("\t");
@@ -39,5 +39,22 @@ public class Song {
 
     public String getSongName() {
         return this.songName;
+    }
+
+    public String HTMLStats() {
+        String HTMLStats = "<html>\n" +
+                "    <head>\n" +
+                "        <title>\"" + this.songName + "\" Statistics</title>\n" +
+                "    " +
+                "</head>\n" +
+                "    <body>\n" +
+                "        <h1>" + this + "</h1>\n" +
+                "        <h4>Popularity: " + this.popularity + "</h4>\n" +
+                "        <h4>Release Date: " + this.releaseDate + "</h4>\n" +
+                "        <h4>Tempo: " + this.tempo + "</h4>\n" +
+                "    </body>\n" +
+                "</html>";
+
+        return HTMLStats;
     }
 }

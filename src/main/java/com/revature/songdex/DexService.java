@@ -20,7 +20,8 @@ public class DexService extends HttpServlet {
         userInput = req.getParameter("searchName");
 
         if (userInput != null) {
-            String result = dexRepository.getSong(userInput);
+            String result = dexRepository.getStats(userInput);
+            //String result = dexRepository.getSong(userInput);
             resp.getWriter().println(result);
         } else {
             for (Song song : dexRepository.getSongs()) {

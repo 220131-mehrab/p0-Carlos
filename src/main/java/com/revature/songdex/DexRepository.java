@@ -46,4 +46,13 @@ public class DexRepository {
 
         return "";
     }
+
+    //Returns a line with relevant song statistics
+    public String getStats(String name) {
+        for (Song song : this.songs) {
+            if (song.getSongName().equals(name))
+                return song.HTMLStats();
+        }
+        return "";
+    }
 }
