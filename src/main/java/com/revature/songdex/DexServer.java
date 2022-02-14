@@ -6,12 +6,13 @@ import org.apache.catalina.startup.Tomcat;
 public class DexServer {
     private Tomcat server;
 
-    public DexServer(DexService dexService) {
+    public DexServer(DexService dexService, SearchFormService searchFormService) {
         this.server = new Tomcat();
         this.server.setBaseDir(System.getProperty("java.io.tmpdir"));
         this.server.getConnector();
         this.server.addContext("", null);
-        this.server.addServlet("", "dexServlet", dexService).addMapping("/");
+        this.server.addServlet("", "dexServlet", dexService).addMapping("/list");
+        this.server.addServlet("", "searchFormServlet", searchFormService).addMapping("/search");
         try {
             this.server.start();
         } catch (LifecycleException e) {

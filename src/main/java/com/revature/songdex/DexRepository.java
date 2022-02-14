@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DexRepository {
-    private List<String> songs;
+    private List<Song> songs;
     private InputStreamReader fileReader;
     private BufferedReader bufferedReader;
     private InputStream file;
@@ -28,12 +28,22 @@ public class DexRepository {
         String line = bufferedReader.readLine();
 
         while (line != null) {
-            this.songs.add(line);
+            this.songs.add(new Song(line));
             line = bufferedReader.readLine();
         }
     }
 
-    public List<String> getSongs() {
+    public List<Song> getSongs() {
         return songs;
+    }
+
+    public String getSong(String name) {
+        for (Song song : this.songs) {
+            if (song.getSongName().equals(name)) {
+                return song.toString();
+            }
+        }
+
+        return "";
     }
 }
