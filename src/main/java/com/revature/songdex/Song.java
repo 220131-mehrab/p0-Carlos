@@ -1,7 +1,7 @@
 package com.revature.songdex;
 
 public class Song {
-    private final String songId, songName, artistId, artistName, popularity, explicit, songType, trackNumber, numArtists, numAvailableMarkets, releaseDate, durationMs, key, mode, timeSignature, acousticness, danceability, energy, instrumentalness, liveness, loudness, speechiness, valence, tempo;
+    private String songId, songName, artistId, artistName, popularity, explicit, songType, trackNumber, numArtists, numAvailableMarkets, releaseDate, durationMs, key, mode, timeSignature, acousticness, danceability, energy, instrumentalness, liveness, loudness, speechiness, valence, tempo;
 
     public Song(String line) {
         String[] columns = line.split("\t");
@@ -32,6 +32,12 @@ public class Song {
         this.tempo = columns[23];
     }
 
+    public Song() {}
+
+    public void setSongName(String name) {
+        this.songName = name;
+    }
+
     @Override
     public String toString() {
         return this.songName + " - " + this.artistName;
@@ -56,5 +62,20 @@ public class Song {
                 "</html>";
 
         return HTMLStats;
+    }
+
+    public boolean equals(Song song) {
+        boolean songIdMatch = this.songId.equals(song.getSongId());
+        boolean artistIdMatch = this.artistId.equals(song.getArtistId());
+
+        return songIdMatch && artistIdMatch;
+    }
+
+    private String getArtistId() {
+        return this.artistId;
+    }
+
+    private String getSongId() {
+        return this.songId;
     }
 }

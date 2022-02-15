@@ -6,9 +6,9 @@ import java.util.List;
 
 public class DexRepository {
     private List<Song> songs;
+    private InputStream file;
     private InputStreamReader fileReader;
     private BufferedReader bufferedReader;
-    private InputStream file;
 
 
     public DexRepository(String filename) {

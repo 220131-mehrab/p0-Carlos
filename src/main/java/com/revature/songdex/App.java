@@ -6,5 +6,6 @@ public class App {
         DexService dexService = new DexService(dexRepository);
         SearchFormService searchFormService = new SearchFormService();
         DexServer server = new DexServer(dexService, searchFormService);
+        server.run();
     }
 }

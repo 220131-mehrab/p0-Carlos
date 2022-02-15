@@ -11,8 +11,13 @@ public class DexServer {
         this.server.setBaseDir(System.getProperty("java.io.tmpdir"));
         this.server.getConnector();
         this.server.addContext("", null);
+
+        this.server.addServlet("", "defaultServlet", new DefaultServlet()).addMapping("/*");
         this.server.addServlet("", "dexServlet", dexService).addMapping("/list");
         this.server.addServlet("", "searchFormServlet", searchFormService).addMapping("/search");
+    }
+
+    public void run() {
         try {
             this.server.start();
         } catch (LifecycleException e) {
