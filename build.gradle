@@ -5,7 +5,7 @@ plugins {
 group 'com.revature'
 version '1.0-SNAPSHOT'
 
-mainClassName = 'com.revature.songex.App'
+mainClassName = 'com.revature.songdex.App'
 
 jar {
     manifest {
