@@ -1,6 +1,8 @@
 package com.revature.songdex;
 
-public class Song {
+import java.util.Objects;
+
+public class Song implements Comparable<Song>{
     private String songId, songName, artistId, artistName, popularity, explicit, songType, trackNumber, numArtists, numAvailableMarkets, releaseDate, durationMs, key, mode, timeSignature, acousticness, danceability, energy, instrumentalness, liveness, loudness, speechiness, valence, tempo;
 
     public Song(String line) {
@@ -64,18 +66,29 @@ public class Song {
         return HTMLStats;
     }
 
-    public boolean equals(Song song) {
-        boolean songIdMatch = this.songId.equals(song.getSongId());
-        boolean artistIdMatch = this.artistId.equals(song.getArtistId());
-
-        return songIdMatch && artistIdMatch;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Song song = (Song) o;
+        return songName.equals(song.songName) && artistName.equals(song.artistName);
     }
 
-    private String getArtistId() {
+    @Override
+    public int hashCode() {
+        return Objects.hash(songName, artistName);
+    }
+
+    public String getArtistId() {
         return this.artistId;
     }
 
-    private String getSongId() {
+    public String getSongId() {
         return this.songId;
+    }
+
+    @Override
+    public int compareTo(Song o) {
+        return this.toString().compareTo(o.toString());
     }
 }
