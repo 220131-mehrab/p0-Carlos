@@ -21,7 +21,7 @@ public class SongTest {
         String testLine1 = "1\tYo\t2\tMama\t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t ";
         Song song1 = new Song(testLine1);
 
-        String testLine2 = "2\tYo\t1\tMama\t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t ";
+        String testLine2 = "2\tThat\t1\tB\t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t ";
         Song song2 = new Song(testLine2);
 
         Song song3 = new Song(testLine1);
