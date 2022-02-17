@@ -1,5 +1,8 @@
-package com.revature.songdex;
+package com.revature.songdex.server;
 
+import com.revature.songdex.servlet.DefaultServlet;
+import com.revature.songdex.servlet.DexService;
+import com.revature.songdex.servlet.SearchFormService;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.startup.Tomcat;
 

@@ -1,5 +1,7 @@
-package com.revature.songdex;
+package com.revature.songdex.servlet;
 
+import com.revature.songdex.domain.Song;
+import com.revature.songdex.respositories.DexRepository;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;

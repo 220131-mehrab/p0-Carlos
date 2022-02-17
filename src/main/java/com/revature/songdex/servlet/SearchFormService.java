@@ -1,4 +1,4 @@
-package com.revature.songdex;
+package com.revature.songdex.servlet;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;

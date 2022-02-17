@@ -1,10 +1,12 @@
-package com.revature.songdex;
+package com.revature.songdex.respositories;
+
+import com.revature.songdex.domain.Song;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CSVDexRepository implements DexRepository{
+public class CSVDexRepository implements DexRepository {
     private List<Song> songs;
     private InputStream file;
     private InputStreamReader fileReader;
@@ -28,7 +30,7 @@ public class CSVDexRepository implements DexRepository{
         String line = bufferedReader.readLine();
 
         while (line != null) {
-            this.songs.add(new Song(line));
+            this.songs.add(Song.fromLine(line));
             line = bufferedReader.readLine();
         }
     }
@@ -37,22 +39,20 @@ public class CSVDexRepository implements DexRepository{
         return songs;
     }
 
-    public String getSong(String name) {
+    public Song getSong(String name) {
         for (Song song : this.songs) {
             if (song.getSongName().equals(name)) {
-                return song.toString();
+                return song;
             }
         }
 
-        return "";
+        return null;
     }
 
     //Returns a line with relevant song statistics
     public String getStats(String name) {
-        for (Song song : this.songs) {
-            if (song.getSongName().equals(name))
-                return song.HTMLStats();
-        }
-        return "";
+        Song targetSong = getSong(name);
+        if (targetSong != null) return targetSong.HTMLStats();
+        else return "";
     }
 }

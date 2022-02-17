@@ -1,5 +1,6 @@
 package com.revature.songdex;
 
+import com.revature.songdex.domain.Song;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -19,12 +20,12 @@ public class SongTest {
     public void songEqualsTest() {
         // Dummy line to initialize the
         String testLine1 = "1\tYo\t2\tMama\t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t ";
-        Song song1 = new Song(testLine1);
+        Song song1 = Song.fromLine(testLine1);
 
         String testLine2 = "2\tThat\t1\tB\t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t ";
-        Song song2 = new Song(testLine2);
+        Song song2 = Song.fromLine(testLine2);
 
-        Song song3 = new Song(testLine1);
+        Song song3 = Song.fromLine(testLine1);
 
         // Test the equals method
         boolean match1 = song1.equals(song2);

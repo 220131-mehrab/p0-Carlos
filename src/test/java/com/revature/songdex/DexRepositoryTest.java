@@ -1,12 +1,14 @@
 package com.revature.songdex;
 
+import com.revature.songdex.domain.Song;
+import com.revature.songdex.respositories.CSVDexRepository;
+import com.revature.songdex.respositories.SQLDexRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.Comparator;
 import java.util.List;
 
-public class CSVDexRepositoryTest {
+public class DexRepositoryTest {
     CSVDexRepository csvDexRepository = new CSVDexRepository("testDataset.csv");
 
     @Test
@@ -56,5 +58,19 @@ public class CSVDexRepositoryTest {
                 return songIdCompare;});
 
         System.out.println(songs);
+    }
+
+    @Test
+    public void getSQLSongTest() {
+        SQLDexRepository testRepo = new SQLDexRepository();
+        Song actual = testRepo.getSong("Big Iron");
+
+        Song expected = Song.songBuilder()
+                .songId("1")
+                .songName("Big Iron")
+                .artistId("1")
+                .artistName("Marty Robbins");
+
+        Assertions.assertEquals(expected, actual);
     }
 }
