@@ -1,7 +1,7 @@
 package com.revature.songdex.servlet;
 
-import com.revature.songdex.domain.Song;
-import com.revature.songdex.service.SongDexService;
+import com.revature.songdex.domain.Person;
+import com.revature.songdex.service.SWService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -11,26 +11,23 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DexServlet extends HttpServlet {
-    SongDexService service;
+public class SearchServlet extends HttpServlet {
+    SWService service;
 
-    public DexServlet(SongDexService service) {
+    public SearchServlet(SWService service) {
         this.service = service;
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String userInput;
-        userInput = req.getParameter("searchName");
-
+        String input = req.getParameter("searchName");
         resp.getWriter().println(service.searchForm());
 
-        List<Song> results = new ArrayList<>();
-        if (userInput != null) {
-            results.add(service.getSong(userInput));
-        } else {
-            results.addAll(service.getSong());
-        }
+        List<Person> results = new ArrayList<>();
+        if (input != null)
+            results.add(service.getPerson(input));
+        else
+            results.addAll(service.getPerson());
 
         resp.getWriter().println(results);
     }
