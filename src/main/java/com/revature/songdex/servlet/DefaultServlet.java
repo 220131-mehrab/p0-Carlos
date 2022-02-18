@@ -21,8 +21,7 @@ public class DefaultServlet extends HttpServlet {
         if (file == null) {
             resp.setStatus(404);
             resp.getOutputStream().println("File Not Found");
-        }
-
-        IOUtils.copy(file, resp.getOutputStream());
+        } else
+            IOUtils.copy(file, resp.getOutputStream());
     }
 }

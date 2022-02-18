@@ -1,19 +1,21 @@
 package com.revature.songdex.servlet;
 
 import com.revature.songdex.domain.Song;
-import com.revature.songdex.respositories.DexRepository;
+import com.revature.songdex.service.SongDexService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
-public class DexService extends HttpServlet {
-    private DexRepository dexRepository;
+public class DexServlet extends HttpServlet {
+    SongDexService service;
 
-    public DexService(DexRepository dexRepository) {
-        this.dexRepository = dexRepository;
+    public DexServlet(SongDexService service) {
+        this.service = service;
     }
 
     @Override
@@ -21,14 +23,15 @@ public class DexService extends HttpServlet {
         String userInput;
         userInput = req.getParameter("searchName");
 
+        resp.getWriter().println(service.searchForm());
+
+        List<Song> results = new ArrayList<>();
         if (userInput != null) {
-            String result = dexRepository.getStats(userInput);
-            //String result = dexRepository.getSong(userInput);
-            resp.getWriter().println(result);
+            results.add(service.getSong(userInput));
         } else {
-            for (Song song : dexRepository.getSongs()) {
-                resp.getWriter().println(song);
-            }
+            results.addAll(service.getSong());
         }
+
+        resp.getWriter().println(results);
     }
 }
