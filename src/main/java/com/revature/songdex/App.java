@@ -9,8 +9,8 @@ import com.revature.songdex.service.SWService;
 public class App {
     public static void main(String[] args) {
         String filename = "starwars.csv";
-        //SWRepo swRepo = new SWRepoCSV(filename);
-        SWRepo swRepo = new SWRepoSQL();
+        SWRepo swRepo = new SWRepoCSV(filename);
+        //SWRepo swRepo = new SWRepoSQL();
         SWService swService = new SWService(swRepo);
         SWServer server = new SWServer(swService);
         server.run();

@@ -22,6 +22,23 @@ public class Person {
     private String species;
 
     /**
+     * Default constructor: sets all fields to defaults
+     */
+    private Person() {
+        id = -1;
+        name = "NA";
+        height = -1;
+        mass = -1;
+        hairColor = "NA";
+        skinColor = "NA";
+        eyeColor = "NA";
+        birthYear = -1;
+        gender = "NA";
+        homeworld = "NA";
+        species = "NA";
+    }
+
+    /**
      * Builder creates a new Person object
      *
      * @return new Person object
@@ -115,6 +132,42 @@ public class Person {
 
     public int getId() {
         return this.id;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public double getMass() {
+        return mass;
+    }
+
+    public String getHairColor() {
+        return hairColor;
+    }
+
+    public String getSkinColor() {
+        return skinColor;
+    }
+
+    public String getEyeColor() {
+        return eyeColor;
+    }
+
+    public double getBirthYear() {
+        return birthYear;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public String getHomeworld() {
+        return homeworld;
+    }
+
+    public String getSpecies() {
+        return species;
     }
 
     @Override

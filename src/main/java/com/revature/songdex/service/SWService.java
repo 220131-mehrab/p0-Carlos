@@ -42,6 +42,7 @@ public class SWService {
      */
     public String searchForm() {
         String HTMLForm = "<html>\n" +
+                "<meta charset='UTF-8'/>\n" +
                 "<head><title>Search Star Wars Characters</title></head>\n" +
                 "<body>\n" +
                 "    <form action='search' method='get'>\n" +
@@ -52,5 +53,24 @@ public class SWService {
                 "</html>";
 
         return HTMLForm;
+    }
+
+    public String infoPage(Person p) {
+        String HTMLStats = "<html>\n" +
+                "<body>\n" +
+                "<h1>" + p.getName() +  "</h1>\n" +
+                "<p>Height: " + p.getHeight() + "</p>\n" +
+                "<p>Mass: " +  p.getMass() + "</p>\n" +
+                "<p>Hair Color: " + p.getHairColor() + "</p>\n" +
+                "<p>Skin Color: " + p.getSkinColor() + "</p>\n" +
+                "<p>Eye Color: " + p.getEyeColor() + "</p>\n" +
+                "<p>Birth Year: " + p.getBirthYear() + "</p>\n" +
+                "<p>Gender: " + p.getGender() + "</p>\n" +
+                "<p>Homeworld: " + p.getHomeworld() + "</p>\n" +
+                "<p>Species: " + p.getSpecies() + "</p>\n" +
+                "</body>\n" +
+                "</html>";
+
+        return HTMLStats;
     }
 }

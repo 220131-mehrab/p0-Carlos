@@ -29,6 +29,10 @@ public class SearchServlet extends HttpServlet {
         else
             results.addAll(service.getPerson());
 
-        resp.getWriter().println(results);
+        if (results.size() == 1)
+            resp.getWriter().println(service.infoPage(results.get(0)));
+        else
+            for (Person p : results)
+                resp.getWriter().println(p + "</br>");
     }
 }
