@@ -1,16 +1,18 @@
 package com.revature.songdex;
 
-import com.revature.songdex.respositories.CSVDexRepository;
-import com.revature.songdex.server.DexServer;
-import com.revature.songdex.servlet.DexService;
-import com.revature.songdex.servlet.SearchFormService;
+import com.revature.songdex.repositories.SWRepo;
+import com.revature.songdex.repositories.SWRepoCSV;
+import com.revature.songdex.repositories.SWRepoSQL;
+import com.revature.songdex.server.SWServer;
+import com.revature.songdex.service.SWService;
 
 public class App {
     public static void main(String[] args) {
-        CSVDexRepository csvDexRepository = new CSVDexRepository("songs_dataset.csv");
-        DexService dexService = new DexService(csvDexRepository);
-        SearchFormService searchFormService = new SearchFormService();
-        DexServer server = new DexServer(dexService, searchFormService);
+        String filename = "starwars.csv";
+        SWRepo swRepo = new SWRepoCSV(filename);
+        //SWRepo swRepo = new SWRepoSQL();
+        SWService swService = new SWService(swRepo);
+        SWServer server = new SWServer(swService);
         server.run();
     }
 }
