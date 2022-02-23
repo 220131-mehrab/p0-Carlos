@@ -4,6 +4,7 @@ import com.revature.songdex.domain.Person;
 import com.revature.songdex.repositories.SWRepo;
 
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Star Wars Service provides services for the servlet classes
@@ -33,7 +34,7 @@ public class SWService {
      * @return Person object with matching name
      */
     public Person getPerson(String input) {
-        return repo.getPerson(input.trim());
+        return repo.getPerson(input.trim().toLowerCase(Locale.ROOT));
     }
 
     /**

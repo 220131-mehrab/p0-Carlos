@@ -5,6 +5,7 @@ import com.revature.songdex.domain.Person;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
 /**
@@ -62,7 +63,7 @@ public class SWRepoCSV implements SWRepo {
     @Override
     public Person getPerson(String name) {
         for (Person person : people)
-            if (person.getName().equals(name))
+            if (person.getName().toLowerCase(Locale.ROOT).contains(name))
                 return person;
 
         return null;

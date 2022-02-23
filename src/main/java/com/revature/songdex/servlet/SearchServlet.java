@@ -33,6 +33,6 @@ public class SearchServlet extends HttpServlet {
             resp.getWriter().println(service.infoPage(results.get(0)));
         else
             for (Person p : results)
-                resp.getWriter().println(p + "</br>");
+                resp.getWriter().println("<a href='search?searchName=" + p.getName() + "'>" + p + "</a></br>");
     }
 }
