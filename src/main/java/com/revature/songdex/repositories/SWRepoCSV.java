@@ -63,7 +63,7 @@ public class SWRepoCSV implements SWRepo {
     @Override
     public Person getPerson(String name) {
         for (Person person : people)
-            if (person.getName().toLowerCase(Locale.ROOT).contains(name))
+            if (person.nameMatch(name))
                 return person;
 
         return null;

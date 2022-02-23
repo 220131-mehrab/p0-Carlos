@@ -1,5 +1,6 @@
 package com.revature.songdex.domain;
 
+import java.util.Locale;
 import java.util.Objects;
 
 /**
@@ -168,6 +169,10 @@ public class Person {
 
     public String getSpecies() {
         return species;
+    }
+
+    public boolean nameMatch(String match) {
+        return this.name.toLowerCase(Locale.ROOT).contains(match.toLowerCase(Locale.ROOT));
     }
 
     @Override
