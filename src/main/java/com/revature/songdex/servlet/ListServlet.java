@@ -8,21 +8,23 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.List;
 
-public class SearchServlet extends HttpServlet {
+public class ListServlet extends HttpServlet {
     SWService service;
 
-    public SearchServlet(SWService service) {
+    public ListServlet(SWService service) {
         this.service = service;
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String input = req.getParameter("searchName");
-        resp.getWriter().println(service.searchForm());
+        List<Person> people;
 
-        Person person = service.getPerson(input);
+        people = service.getPerson();
 
-        resp.getWriter().println(service.infoPage(person));
+        resp.getWriter().println(service.listHeader());
+        for (Person p : people)
+            resp.getWriter().println("<a href='search?searchName=" + p.getName() + "'>" + p + "</a></br>");
     }
 }

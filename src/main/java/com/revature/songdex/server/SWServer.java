@@ -2,6 +2,7 @@ package com.revature.songdex.server;
 
 import com.revature.songdex.service.SWService;
 import com.revature.songdex.servlet.DefaultServlet;
+import com.revature.songdex.servlet.ListServlet;
 import com.revature.songdex.servlet.SearchServlet;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.startup.Tomcat;
@@ -24,6 +25,7 @@ public class SWServer {
 
         this.server.addServlet(webAppName, "defaultServlet", new DefaultServlet()).addMapping("/*");
         this.server.addServlet(webAppName, "searchServlet", new SearchServlet(service)).addMapping("/search");
+        this.server.addServlet(webAppName, "listServlet", new ListServlet(service)).addMapping("/list");
     }
 
     /**

@@ -46,9 +46,8 @@ public class SWService {
                 "<meta charset='UTF-8'/>\n" +
                 "<head><title>Search Star Wars Characters</title></head>\n" +
                 "<body>\n" +
-                "    <form action='search' method='get'>\n" +
-                "        <input type='text' name='searchName'/>\n" +
-                "        <input type='submit' value='Search'/>\n" +
+                "    <form action='list' method='get'>\n" +
+                "        <input type='submit' value='Full Character List'/>\n" +
                 "    </form>\n" +
                 "</body>\n" +
                 "</html>";
@@ -73,5 +72,20 @@ public class SWService {
                 "</html>";
 
         return HTMLStats;
+    }
+
+    public String listHeader() {
+        String HTMLListHead = "<html>\n" +
+                "<meta charset='UTF-8'/>\n" +
+                "<head><title>Star Wars Character List</title></head>\n" +
+                "<body>\n" +
+                "<h1>Character List</h1>\n" +
+                "    <form action='search' method='get'>\n" +
+                "        <input type='text' name='searchName'/>\n" +
+                "        <input type='submit' value='Search'/>\n" +
+                "    </form>\n" +
+                "</html>";
+
+        return HTMLListHead;
     }
 }
