@@ -19,10 +19,9 @@ public class SearchServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String input = req.getParameter("searchName");
-        resp.getWriter().println(service.searchForm());
-
         Person person = service.getPerson(input);
 
+        resp.getWriter().println(service.searchHeader());
         resp.getWriter().println(service.infoPage(person));
     }
 }

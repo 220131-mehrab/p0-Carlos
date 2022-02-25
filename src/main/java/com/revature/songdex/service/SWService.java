@@ -41,7 +41,7 @@ public class SWService {
      * Creates the HTML Form to search for a character
      * @return String of html form
      */
-    public String searchForm() {
+    public String searchHeader() {
         String HTMLForm = "<html>\n" +
                 "<meta charset='UTF-8'/>\n" +
                 "<head><title>Search Star Wars Characters</title></head>\n" +
@@ -87,5 +87,16 @@ public class SWService {
                 "</html>";
 
         return HTMLListHead;
+    }
+
+    public String listContents() {
+        String HTMLListContents = "<html>\n";
+
+        for (Person p : getPerson())
+            HTMLListContents += "<a href='search?searchName=" + p.getName() + "'>" + p + "</a></br>\n";
+
+        HTMLListContents += "</html>";
+
+        return HTMLListContents;
     }
 }
