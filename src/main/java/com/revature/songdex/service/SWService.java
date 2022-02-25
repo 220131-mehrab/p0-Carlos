@@ -38,11 +38,11 @@ public class SWService {
     }
 
     /**
-     * Creates the HTML Form to search for a character
-     * @return String of html form
+     * Creates the HTML Header for the Search Page
+     * @return String of html header
      */
     public String searchHeader() {
-        String HTMLForm = "<html>\n" +
+        String HTMLHeader = "<html>\n" +
                 "<meta charset='UTF-8'/>\n" +
                 "<head><title>Search Star Wars Characters</title></head>\n" +
                 "<body>\n" +
@@ -52,9 +52,14 @@ public class SWService {
                 "</body>\n" +
                 "</html>";
 
-        return HTMLForm;
+        return HTMLHeader;
     }
 
+    /**
+     * Creates the HTML statistics for specific character
+     * @param p Person object to create statistics from
+     * @return String of HTML statistics
+     */
     public String infoPage(Person p) {
         String HTMLStats = "<html>\n" +
                 "<body>\n" +
@@ -74,21 +79,37 @@ public class SWService {
         return HTMLStats;
     }
 
+    /**
+     * Creates header for list page
+     * @return String of HTML header
+     */
     public String listHeader() {
         String HTMLListHead = "<html>\n" +
                 "<meta charset='UTF-8'/>\n" +
                 "<head><title>Star Wars Character List</title></head>\n" +
                 "<body>\n" +
                 "<h1>Character List</h1>\n" +
-                "    <form action='search' method='get'>\n" +
-                "        <input type='text' name='searchName'/>\n" +
-                "        <input type='submit' value='Search'/>\n" +
-                "    </form>\n" +
+                "<form action='sort' method='get'>\n" +
+                "    Sort by Field:<br/>\n" +
+                "    <input type='radio' name='option' value='name'/>Name\n" +
+                "    <input type='radio' name='option' value='height'/>Height\n" +
+                "    <input type='radio' name='option' value='mass'/>Mass\n" +
+                "    <input type='radio' name='option' value='birthYear'/>Birth Year\n" +
+                "    <input type='submit' value='Sort'/>\n" +
+                "</form>\n" +
+                "<form action='search' method='get'>\n" +
+                "    <input type='text' name='searchName'/>\n" +
+                "    <input type='submit' value='Search'/>\n" +
+                "</form>\n" +
                 "</html>";
 
         return HTMLListHead;
     }
 
+    /**
+     * Generates an HTML list of all characters as links to their stats pages
+     * @return String of HTML List
+     */
     public String listContents() {
         String HTMLListContents = "<html>\n";
 
@@ -98,5 +119,55 @@ public class SWService {
         HTMLListContents += "</html>";
 
         return HTMLListContents;
+    }
+
+    /**
+     * Generates a header for the Sorting pages
+     * @return String of HTML Header
+     */
+    public String sortHeader(String opt) {
+        String HTMLHeader = "<html>\n" +
+                "<meta charset='UTF-8'/>\n" +
+                "<head><title>Sorted Star Wars Characters</title></head>\n" +
+                "<body>\n" +
+                "    <form action='list' method='get'>\n" +
+                "        <input type='submit' value='Full Character List'/>\n" +
+                "    </form>\n" +
+                "    <h1>Star Wars Characters Sorted By Field: " + opt + "</h1>" +
+                "</body>\n" +
+                "</html>";
+
+        return HTMLHeader;
+    }
+
+    /**
+     * Generates HTML for sorted list
+     * @param option what kind of sorting is being done
+     * @return String of HTML list
+     */
+    public String sortList(String option) {
+        List<Person> peeps;
+        switch(option) {
+            case "height":
+                peeps = repo.getHeightSort();
+                break;
+            case "mass":
+                peeps = repo.getMassSort();
+                break;
+            case "birthYear":
+                peeps = repo.getYearSort();
+                break;
+            case "name":
+            default:
+                peeps = repo.getNameSort();
+        }
+
+        String HTMLSortContents = "<html>\n";
+        for (Person p : peeps)
+            HTMLSortContents += "<a href='search?searchName=" + p.getName() + "'>" + p + "</a></br>\n";
+        HTMLSortContents += "</html>";
+
+        return HTMLSortContents;
+
     }
 }

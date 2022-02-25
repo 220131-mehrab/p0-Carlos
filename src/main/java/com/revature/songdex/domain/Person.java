@@ -12,7 +12,7 @@ public class Person {
     // Fields
     private int id;
     private String name;
-    private int height;
+    private double height;
     private double mass;
     private String hairColor;
     private String skinColor;
@@ -48,6 +48,7 @@ public class Person {
         return new Person();
     }
 
+    //Setters
     public Person id(String id) {
         id = id.replace("\"", "");
         int intId = Integer.parseInt(id);
@@ -67,7 +68,7 @@ public class Person {
         if (height.equals("NA"))
             this.height = -1;
         else
-            this.height = Integer.parseInt(height);
+            this.height = Double.parseDouble(height);
         return this;
     }
 
@@ -135,7 +136,7 @@ public class Person {
         return this.id;
     }
 
-    public int getHeight() {
+    public double getHeight() {
         return height;
     }
 

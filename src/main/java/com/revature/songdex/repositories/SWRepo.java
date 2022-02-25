@@ -21,4 +21,28 @@ public interface SWRepo {
      * @return Person object with matching name field, returns null if none found
      */
     Person getPerson(String name);
+
+    /**
+     * return a list of Person objects sorted by height
+     * @return sorted Persons
+     */
+    List<Person> getHeightSort();
+
+    /**
+     * return a list of Person objects sorted by mass
+     * @return sorted Persons
+     */
+    List<Person> getMassSort();
+
+    /**
+     * return a list of Person objects sorted by birthYear
+     * @return sorted Persons
+     */
+    List<Person> getYearSort();
+
+    /**
+     * return a list of Person objects sorted by name
+     * @return sorted Persons
+     */
+    List<Person> getNameSort();
 }

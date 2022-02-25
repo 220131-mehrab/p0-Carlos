@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class ListServlet extends HttpServlet {
-    SWService service;
+    private SWService service;
 
     public ListServlet(SWService service) {
         this.service = service;

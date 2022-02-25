@@ -3,10 +3,8 @@ package com.revature.songdex.repositories;
 import com.revature.songdex.domain.Person;
 
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Scanner;
+import java.lang.reflect.Array;
+import java.util.*;
 
 /**
  * SWRepoCSV is a CSV Reader specialized for importing Star Wars Character data in a known format:
@@ -67,5 +65,54 @@ public class SWRepoCSV implements SWRepo {
                 return person;
 
         return null;
+    }
+
+    @Override
+    public List<Person> getHeightSort() {
+        List<Person> peeps = new ArrayList<>();
+        for (Person p : people)
+            if (p.getHeight() != -1)
+                peeps.add(p);
+
+        // Compare using getHeight method
+        peeps.sort(Comparator.comparingDouble(Person::getHeight));
+
+        return peeps;
+    }
+
+    @Override
+    public List<Person> getMassSort() {
+        List<Person> peeps = new ArrayList<>();
+        for (Person p : people)
+            if (p.getMass() != -1)
+                peeps.add(p);
+
+        // Compare using getMass method
+        peeps.sort(Comparator.comparingDouble(Person::getMass));
+
+        return peeps;
+    }
+
+    @Override
+    public List<Person> getYearSort() {
+        List<Person> peeps = new ArrayList<>();
+        for (Person p : people)
+            if (p.getBirthYear() != -1)
+                peeps.add(p);
+
+        // Compare using getBirthYear method
+        peeps.sort(Comparator.comparingDouble(Person::getBirthYear).reversed());
+
+        return peeps;
+    }
+
+    @Override
+    public List<Person> getNameSort() {
+        List<Person> peeps = new ArrayList<>(people);
+
+        // Compare using getName method
+        peeps.sort(Comparator.comparing(Person::getName));
+
+        return peeps;
     }
 }
