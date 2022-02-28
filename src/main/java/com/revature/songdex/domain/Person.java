@@ -1,5 +1,6 @@
 package com.revature.songdex.domain;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Locale;
 import java.util.Objects;
 
@@ -173,7 +174,8 @@ public class Person {
     }
 
     public boolean nameMatch(String match) {
-        return this.name.toLowerCase(Locale.ROOT).contains(match.toLowerCase(Locale.ROOT));
+        String encodedName = new String(this.name.getBytes(), StandardCharsets.UTF_8);
+        return encodedName.toLowerCase(Locale.ROOT).contains(match.toLowerCase(Locale.ROOT));
     }
 
     @Override

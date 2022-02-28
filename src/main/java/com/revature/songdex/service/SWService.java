@@ -112,7 +112,7 @@ public class SWService {
     public String listHeader() {
         String HTMLListHead = "<html>\n" +
                 //"<meta charset='UTF-8'/>\n" +
-                "<meta http-equiv='Content Type' content='text/html;charset=utf-8'>\n" +
+                "<meta charset='utf-8'>\n" +
                 "<head><title>Star Wars Character List</title>\n" +
                 inlineStyle +
                 "</head>\n" +
