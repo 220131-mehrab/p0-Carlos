@@ -23,7 +23,19 @@ public class SWService {
                 "body {background-color: #E0FFFF;}\n" +
                 "h1 {font-weight: bold; font-style: italic;}\n" +
                 "form {font-weight: bold; text-decoration: underline; text-decoration-color: black;}\n" +
-                "a {color: black; text-decoration: none;}" +
+                "a {" +
+                " color: black;" +
+                " text-decoration: none;" +
+                "}" +
+                ".sort {" +
+                " color: black;" +
+                " text-decoration: none;" +
+                " width: 300px;" +
+                " float: left;" +
+                " height: 17px;" +
+                " border-bottom: 1px dotted black;" +
+                "}\n" +
+                ".data {border-bottom: none;}\n" +
                 "</style>\n";
         this.repo = repo;
     }
@@ -99,8 +111,9 @@ public class SWService {
      */
     public String listHeader() {
         String HTMLListHead = "<html>\n" +
-                "<meta charset='UTF-8'/>\n" +
-                "<head><title>Star Wars Character List</title>" +
+                //"<meta charset='UTF-8'/>\n" +
+                "<meta http-equiv='Content Type' content='text/html;charset=utf-8'>\n" +
+                "<head><title>Star Wars Character List</title>\n" +
                 inlineStyle +
                 "</head>\n" +
                 "<body>\n" +
@@ -184,11 +197,26 @@ public class SWService {
         }
 
         String HTMLSortContents = "<html>\n";
-        for (Person p : peeps)
-            HTMLSortContents += "<a href='search?searchName=" + p.getName() + "'>" + p + "</a></br>\n";
-        HTMLSortContents += "</html>";
+        for (Person p : peeps) {
+            String data = getStat(p, option);
+
+            HTMLSortContents += "<a class='sort' href='search?searchName=" + p.getName() + "'>" + p + "</a><a class='data'>" + data + "</a></br>\n";
+        }HTMLSortContents += "</html>";
 
         return HTMLSortContents;
+    }
 
+    public String getStat(Person p, String option) {
+        switch (option) {
+            case "height":
+                return p.getHeight() + " cm";
+            case "mass":
+                return p.getMass() + " kg";
+            case "birthYear":
+                return p.getBirthYear() + " BBY";
+            case "name":
+            default:
+                return "";
+        }
     }
 }
