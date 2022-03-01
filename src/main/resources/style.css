@@ -1,5 +1,6 @@
 body {
     background: #E0FFFF;
+    font-family: Georgia, serif;
 }
 h1 {
     color: black;
@@ -26,7 +27,7 @@ a {
     text-decoration: none;
     width: 300px;
     float: left;
-    height: 17px;
+    height: 16px;
     border-bottom: 1px dotted black;
 }
 .data {
