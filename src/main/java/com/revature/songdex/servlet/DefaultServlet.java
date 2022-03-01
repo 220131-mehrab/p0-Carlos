@@ -19,9 +19,10 @@ public class DefaultServlet extends HttpServlet {
 
         InputStream file = getClass().getClassLoader().getResourceAsStream(filename);
         if (file == null) {
-            resp.setStatus(404);
-            resp.getOutputStream().println("File Not Found");
-        } else
-            IOUtils.copy(file, resp.getOutputStream());
+            filename = "lost.html";
+            file = getClass().getClassLoader().getResourceAsStream(filename);
+        }
+
+        IOUtils.copy(file, resp.getOutputStream());
     }
 }

@@ -11,7 +11,6 @@ import java.util.Locale;
  */
 public class SWService {
     SWRepo repo;
-    String inlineStyle;
 
     /**
      * SWService constructor takes a SWRepo that it will use as its repository
@@ -19,24 +18,6 @@ public class SWService {
      * @param repo Repository of charcters to use
      */
     public SWService(SWRepo repo) {
-        this.inlineStyle = "<style>\n" +
-                "body {background-color: #E0FFFF;}\n" +
-                "h1 {font-weight: bold; font-style: italic;}\n" +
-                "form {font-weight: bold; text-decoration: underline; text-decoration-color: black;}\n" +
-                "a {" +
-                " color: black;" +
-                " text-decoration: none;" +
-                "}" +
-                ".sort {" +
-                " color: black;" +
-                " text-decoration: none;" +
-                " width: 300px;" +
-                " float: left;" +
-                " height: 17px;" +
-                " border-bottom: 1px dotted black;" +
-                "}\n" +
-                ".data {border-bottom: none;}\n" +
-                "</style>\n";
         this.repo = repo;
     }
 
@@ -67,8 +48,8 @@ public class SWService {
     public String searchHeader() {
         String HTMLHeader = "<html>\n" +
                 "<meta charset='UTF-8'/>\n" +
-                "<head><title>Search Star Wars Characters</title>" +
-                inlineStyle +
+                "<head><title>Search Star Wars Characters</title>\n" +
+                "<link rel='stylesheet' href='style.css'>\n" +
                 "<body>\n" +
                 "    <form action='list' method='get'>\n" +
                 "        <input type='submit' value='Full Character List'/>\n" +
@@ -114,7 +95,7 @@ public class SWService {
                 //"<meta charset='UTF-8'/>\n" +
                 "<meta charset='utf-8'>\n" +
                 "<head><title>Star Wars Character List</title>\n" +
-                inlineStyle +
+                "<link rel='stylesheet' href='style.css'>\n" +
                 "</head>\n" +
                 "<body>\n" +
                 "<h1>Character List</h1>\n" +
@@ -144,7 +125,7 @@ public class SWService {
         String HTMLListContents = "<html>\n";
 
         for (Person p : getPerson())
-            HTMLListContents += "<a href='search?searchName=" + p.getName() + "'>" + p + "</a></br>\n";
+            HTMLListContents += "<a class='list' href='search?searchName=" + p.getName() + "'>" + p + "</a></br>\n";
 
         HTMLListContents += "</html>";
 
@@ -159,8 +140,8 @@ public class SWService {
     public String sortHeader(String opt) {
         String HTMLHeader = "<html>\n" +
                 "<meta charset='UTF-8'/>\n" +
-                "<head><title>Sorted Star Wars Characters</title>" +
-                inlineStyle +
+                "<head><title>Sorted Star Wars Characters</title>\n" +
+                "<link rel='stylesheet' href='style.css'>\n" +
                 "</head>\n" +
                 "<body>\n" +
                 "    <h1>Star Wars Characters Sorted By Field: " + opt + "</h1>" +

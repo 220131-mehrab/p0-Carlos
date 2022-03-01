@@ -6,3 +6,30 @@ h1 {
     font-weight: bold;
     font-style: italic;
 }
+h3 {
+    color: black;
+    font-weight: bold;
+    font-style: italic;
+}
+form {
+    font-weight: bold;
+    text-decoration: underline;
+    text-decoration-color: black;
+}
+a {
+    color: #00008B;
+}
+.list {
+    text-decoration: none;
+}
+.sort {
+    text-decoration: none;
+    width: 300px;
+    float: left;
+    height: 17px;
+    border-bottom: 1px dotted black;
+}
+.data {
+    color: black;
+    border-bottom: none;
+}
