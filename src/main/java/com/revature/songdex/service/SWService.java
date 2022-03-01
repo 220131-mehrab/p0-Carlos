@@ -181,7 +181,7 @@ public class SWService {
         for (Person p : peeps) {
             String data = getStat(p, option);
 
-            HTMLSortContents += "<a class='sort' href='search?searchName=" + p.getName() + "'>" + p + "</a><a class='data'>" + data + "</a></br>\n";
+            HTMLSortContents += "<a class='sort' href='search?searchName=" + p.getName() + "'>" + p.toStringFormat() + "</a><a class='data'>" + data + "</a></br>\n";
         }HTMLSortContents += "</html>";
 
         return HTMLSortContents;

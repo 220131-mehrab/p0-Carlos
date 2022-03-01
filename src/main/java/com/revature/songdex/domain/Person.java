@@ -178,6 +178,11 @@ public class Person {
         return encodedName.toLowerCase(Locale.ROOT).contains(match.toLowerCase(Locale.ROOT));
     }
 
+    public String toStringFormat() {
+        String formatted = String.format("%3d - %s", this.id, this.name);
+        return formatted;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

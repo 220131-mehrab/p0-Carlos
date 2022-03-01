@@ -24,7 +24,10 @@ a {
     text-decoration: none;
 }
 .sort {
+    white-space: pre;
     text-decoration: none;
+    font-family: monospace;
+    font-size: 16;
     width: 300px;
     float: left;
     height: 16px;
@@ -33,4 +36,6 @@ a {
 .data {
     color: black;
     border-bottom: none;
+    font-family: monospace;
+    font-size: 16;
 }

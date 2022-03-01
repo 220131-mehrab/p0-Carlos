@@ -26,4 +26,16 @@ public class PersonTest {
         Assertions.assertEquals(p1, p2);
         Assertions.assertNotEquals(p1, p3);
     }
+
+    @Test
+    public void formatTest() {
+        Person p1 = Person.builder()
+                .id("1")
+                .name("Carlos")
+                .mass("190");
+
+        String expected = "  1 - Carlos";
+
+        Assertions.assertEquals(expected, p1.toStringFormat());
+    }
 }
