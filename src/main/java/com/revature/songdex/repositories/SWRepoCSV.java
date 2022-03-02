@@ -51,6 +51,7 @@ public class SWRepoCSV implements SWRepo {
 
             people.add(temp);
         }
+        scanner.close();
     }
 
     @Override

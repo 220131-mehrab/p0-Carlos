@@ -15,7 +15,7 @@ public class SWService {
     /**
      * SWService constructor takes a SWRepo that it will use as its repository
      *
-     * @param repo Repository of charcters to use
+     * @param repo Repository of characters to use
      */
     public SWService(SWRepo repo) {
         this.repo = repo;
